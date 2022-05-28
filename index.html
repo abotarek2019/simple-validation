@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="utf-8">
+        <meta name=" ahmed" content="ahmed">
+        <link rel="stylesheet" href="normalize.css" media="">
+        <link rel="stylesheet" href="" media="all"><!--external css-->
+        <link rel="icon" href="R.png">
+        <script type="text/javascript" src="html5shiv.min.js"></script>
+        <!--  <script src="external file" defer></script>      -->
+        <title>validation</title>
+
+        <style>
+            /*internal css*/
+
+            body{
+                
+                background:url('background.jpeg');
+                background-size: contain;
+            }
+            #form  {
+                width: 500px;
+                height: 500px;
+text-transform: capitalize;
+color: #ffff;
+/*color: rgb(214, 122, 127);*/
+    margin: auto;
+    padding-top:80px;
+    text-align: center;
+    background:url('r.png');
+    background-size:contain;
+
+    border-radius: 30px;
+    outline: 2px solid black;
+    transition: all 1s ease-in-out;
+   
+
+}
+#form:hover{
+    opacity: 0.7;
+}
+
+#form div input,button{
+    border-radius: 5px;
+    outline: 2px solid black;
+    margin: 5px;
+}
+
+
+ 
+        </style>
+    </head>
+    <body>
+
+
+
+
+<div id="error"></div>
+
+        <form id="form" action="" method="post" enctype="application/x-www-form-urlencoded">
+            <div>
+                <label for="name">your name </label><br>
+                <input type="text" name="name" id="name" placeholder="Enter your name " required autocomplete="on" autofocus autocapitalize="on" >
+            </div>
+            <div>
+                <label for="email">Mobile Number or Email </label><br>
+                <input type="email" name="email" id="email" placeholder="Enter your mobile or Email "  >
+            </div>
+            <div>
+                <label for="password">password</label><br>
+                <input id="password" name="password" type="password" placeholder="Enter your password" >
+            </div>
+            <div>
+                <label for="repassword">Re-enter password</label><br>
+                <input id="repassword" name="repassword" type="password" placeholder="Re-Enter your password">
+            </div>
+          
+            <div>
+                
+<button type="submit">confirm</button>
+            </div>
+        </form>
+
+        <script type="text/javascript" >
+            //internal js
+            
+            const name=document.getElementById('name');
+            const email=document.getElementById('email');
+            const password=document.getElementById('password');
+            const repassword=document.getElementById('repassword');
+            const form=document.getElementById('form');
+            const erorrElement=document.getElementById('error');
+
+
+            form.addEventListener('submit',(e)=>{
+
+
+               let message=[];//array for error message
+
+
+
+               if(name.value ===''|| name.value == null)
+               {
+                 //  message.push('name is required');
+                 alert('name is required!!');
+                 e.preventDefault();
+                  
+               }
+               if(email.value ==="" || email.value==null)
+               {
+                  // message.push('Email or mobile is required !!')
+                  if(confirm('Email or mobile is required !!Press yes to continue and cancel to reload page'))
+                 {
+                    e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                    return true; //ok
+                 }
+                 else{ onload();}//cancel
+               }
+               if(password.value.length <= 6)
+               {
+                  // message.push('password must be longer thsn 6 char !!');
+                  if(confirm(' password must be longer thsn 6 char!! Press yes to continue and cancel to reload page'))
+                 {
+                    e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                    return true;
+                 }
+                 else{ onload();}
+
+               }
+               if(password.value.length >= 20)
+               {
+                  // message.push('password must be less thsn 20 char !!');
+                  if(confirm('password must be less thsn 20 char!!Press yes to continue and cancel to reload page'))
+                 {
+                    e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                    return true;
+                 }
+                 else{ onload();}
+               }
+
+               if(password.value === 'password')
+               {
+                 //  message.push('password cannot be password !!');
+                 if(confirm('password cannot be password!! Press yes to continue and cancel to reload page'))
+                 {
+                    e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                    return true;
+                 }
+                 else{ onload();}
+                
+               }
+               if(repassword.value == password.value && repassword.value === password.value)
+               {
+                   return true;
+               }
+               else{
+                  // message.push('password  is incorrect !!');
+                  if(confirm('password  is incorrect fill the repassword  !! Press yes to continue and cancel to reload page '))
+                 {
+                    e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                    return true;
+                 }
+                 else{ onload();}
+               }
+
+              /* if(message.length > 0)
+               {
+                e.preventDefault();//this step will prevent any defualt behavoir in page and this for function for error
+                erorrElement.innerHTML=message.join(', ');
+                
+                   
+               }*/
+            
+            });
+        </script>
+    </body>
+</html>
